@@ -54,10 +54,32 @@ class Array
         true
     end
 
+
+    def my_flatten
+        new_arr = []
+        self.each do |ele|
+            if ele.is_a?(Array)
+                new_arr.concat(ele.my_flatten)
+            else  
+                new_arr << ele 
+            end 
+        end 
+    new_arr
+    end 
+
+
+    def my_zip(*args)
+        new_arr = Array.new(self.length) 
+        self.each do |ele|
+            
+        end 
+
+    end 
+
 end 
 
 
-
+arr_2 = [2, [3, 4], 5]
 arr = [1, 2, 4]
 # arr.my_each {|ele| p ele + 1}
 
@@ -68,5 +90,8 @@ arr = [1, 2, 4]
 # p arr.my_any? {|ele| ele > 5} # false
 # p arr.my_any? {|ele| ele > 3} # true
 
-p arr.my_all? {|ele| ele < 5} # true
-p arr.my_all? {|ele| ele > 3} # false
+# p arr.my_all? {|ele| ele < 5} # true
+# p arr.my_all? {|ele| ele > 3} # false
+
+p arr_2.my_flatten
+
