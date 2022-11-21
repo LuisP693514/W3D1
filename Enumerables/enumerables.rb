@@ -71,10 +71,13 @@ class Array
     def my_zip(*args)
         new_arr = Array.new(self.length) 
         self.each do |ele|
-            
+            new_arr << self.merge
         end 
 
     end 
+
+    
+
 
 end 
 
