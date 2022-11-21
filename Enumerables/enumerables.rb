@@ -69,17 +69,35 @@ class Array
 
 
     def my_zip(*args)
-        new_arr = Array.new(self.length) 
-        self.each do |ele|
-            new_arr << self.merge
-        end 
+        new_arr = Array.new(self.length) {Array.new(args.length + 1)}
+        arr_2d = [self, *args].map {|arr| arr.length}
+        limit = arr_2d.max
+        merged_arr = [self, *args]
+        (0...limit).each do |idx1|   
+            (0...limit).each do |idx2|
+                if merged_arr[idx1][idx2] && new_arr[idx1][idx2] != nil
+                    new_arr[idx1][idx2] = merged_arr[idx1][idx2] 
+                end 
 
+            end 
+        end
+    new_arr
     end 
-
-    
-
-
 end 
+
+
+a = [ 4, 5, 6 ]
+b = [ 7, 8, 9 ]
+[1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
+[1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
+
+c = [10, 11, 12]
+d = [13, 14, 15]
+[1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+
+
+
 
 
 arr_2 = [2, [3, 4], 5]
