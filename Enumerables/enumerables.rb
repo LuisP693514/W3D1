@@ -70,12 +70,17 @@ class Array
 
     def my_zip(*args)
         new_arr = Array.new(self.length) 
-        self.each do |ele|
-            
-        end 
+        arr_2d = [self, *args].map {|arr| arr.length}
+        limit = arr_2d.max
 
+        (0...limit).each do |idx1|   
+            (0...limit).each do |idx2|
+
+                
+
+            end 
+        end
     end 
-
 end 
 
 
