@@ -106,10 +106,53 @@ class Array
        end
     end
 
+    def my_join(separator="")
+
+        str = ""
+
+        self.each.with_index {|ele, idx|
+        
+            if idx != self.length - 1
+                str << ele.to_s + separator
+            else
+                str << ele.to_s
+            end
+
+        }
+
+        str
+    end
+
+    def my_reverse
+
+        ele_arr = []
+        
+        self.length.times {ele_arr << self.pop}
+
+        ele_arr.each {|ele| self << ele}
+        
+        self
+
+    end
 
 end
 
+#-----------------------------------
+# my_reverse tests
+#-----------------------------------
 
+# p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+# p [ 1 ].my_reverse               #=> [1]
+
+#----------------------------------
+# my_join tests
+#---------------------------------
+
+# a = [ "a", "b", "c", "d" ]
+# p a.my_join         # => "abcd"
+# p a.my_join("$")    # => "a$b$c$d"
+
+#----------------------------------
 # my_rotate tests (test 1 at a time for accurate results)
 #-----------------------------------
 
@@ -119,6 +162,7 @@ end
 # p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
 # p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
 
+#------------------------------------
 # #my_zip tests
 #-----------------------------------
 
